@@ -10,11 +10,21 @@
 
 // 5. إعداد طرق مختلفة | setup the different routes (get, post, put, delete)
 
+import setupRoutesForUsers from "./Auth.js";
+import setupRoutesForStudents from "./Students.js";
 
-
-
-
-
-
+const setupRoutes = (app) => {
+  // Home
+  app.get("/", (req, res) => {
+    res.send("Home Page");
+  });
+  setupRoutesForUsers(app);
+  setupRoutesForStudents(app);
+  // The rest
+  app.get("*", (req, res) => {
+    res.send("This page doesn't exist!");
+  });
+};
 
 // 3. تصدير الوحدة | export the module
+export default setupRoutes;
