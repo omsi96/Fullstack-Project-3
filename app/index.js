@@ -30,7 +30,7 @@ const start = async () => {
     const app = express();
     app.use(bodyParser.urlencoded({ extended: false }));
     setupRoutes(app);
-    app.listen(3000);
+    app.listen(80);
   } catch (error) {
     // ❌ CONNECTION ERROR
     console.log("Couldn't connect to database with error: ", error);
