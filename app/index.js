@@ -8,9 +8,10 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import setupRoutes from "./routes/route.js";
+import dotnev from "dotenv";
 
 const start = async () => {
-  let database = "mongodb://localhost/project-fs-1";
+  let database = process.env.MONGODB_URI || "mongodb://localhost/project-fs-1";
   try {
     const options = {
       useNewUrlParser: true,
@@ -30,7 +31,8 @@ const start = async () => {
     const app = express();
     app.use(bodyParser.urlencoded({ extended: false }));
     setupRoutes(app);
-    app.listen(80);
+    const port = process.env.PORT || 3000;
+    app.listen(port);
   } catch (error) {
     // ❌ CONNECTION ERROR
     console.log("Couldn't connect to database with error: ", error);

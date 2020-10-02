@@ -34,4 +34,5 @@ const authorize = async (req, res) => {
   });
   return promise;
 };
+
 export { hashPassword, authorize };
